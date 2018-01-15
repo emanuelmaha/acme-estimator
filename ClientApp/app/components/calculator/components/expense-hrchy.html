@@ -1,0 +1,12 @@
+<div class="expense" *ngFor="let expense of expenses">
+	{{ExpenseType[expense.expenseType]}}
+	<expense-hrchy [expenses]="expense.children"></expense-hrchy>
+</div>
+<div class="add-more"> 
+	<a class="hint" *ngIf="showAddMore" (click)="showAddMore = false; showCheckbox = true">Add more expenses</a>
+	<div class="expense-type" *ngIf="showCheckbox">
+		<label><input type="checkbox" (click)="AddExpense(ExpenseType.Network)" ngModel=""> Network </label>
+		<label><input type="checkbox" (click)="AddExpense(ExpenseType.Server)" ngModel=""> Server </label>
+		<label><input type="checkbox" (click)="AddExpense(ExpenseType.Computer) " ngModel=""> Computer </label>
+	</div>
+</div>

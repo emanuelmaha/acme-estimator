@@ -1,0 +1,19 @@
+.expense {
+	margin-left: 25px;
+	padding: 15px;
+}
+
+.expense:hover {
+	background-color: beige;
+}
+
+.expense-type label {
+	margin-right: 10px;
+}
+
+.expense .add-more a {
+	color: #a1caec;
+}
+a {
+	cursor: pointer;
+}

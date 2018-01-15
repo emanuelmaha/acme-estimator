@@ -1,0 +1,25 @@
+<div class="estimator">
+	<h1>Network expense calculator</h1>
+
+	<div class="header">
+		<h3>Network expense cost</h3>
+		<p>Networks mandate $2000 each.</p>
+		<p>Servers cost $750 each.</p>
+		<p>Computers cost $300 each.</p>
+	</div>
+
+	<div class="content">
+		<h3>Build Network Hirarchy</h3>
+		<expense-hrchy [expenses]="calculator.expenses"></expense-hrchy>
+	</div>
+
+
+	<div class="result">
+		<h3>Network Cost</h3>
+		<div class="total-cost" *ngIf="calculator.totalCost != 0">
+			<strong>Total cost is {{calculator.totalCost}}</strong>
+		</div>
+	</div>
+
+	<button (click)="calculate()">Calculate</button>
+</div>
