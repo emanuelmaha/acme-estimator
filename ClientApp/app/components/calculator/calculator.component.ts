@@ -1,19 +1,30 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Calculator} from "../../model/Calculator";
+import {ExpenseType} from "../../model/ExpenseType";
+import {Expense} from "../../model/Expense";
 
 @Component({
-    selector: 'calculator',
-    templateUrl: './calculator.component.html'
+	selector: 'calculator',
+	templateUrl: './calculator.component.html'
 })
 export class CalculatorComponent {
-    calculator: Calculator;
-    
-    constructor(){
-        this.calculator = new Calculator();
-        this.calculator.expenses = [];
-    }
+	ExpenseType: typeof ExpenseType = ExpenseType;
+	calculator: Calculator;
 
-    public calculate() {
-        this.calculator.Calculate();
-    }
+	constructor() {
+		this.calculator = new Calculator();
+		this.calculator.expenses = [];
+	}
+
+	public calculate() {
+		this.calculator.Calculate();
+	}
+
+	public AddExpense(expenseType: ExpenseType) {
+		let expense = new Expense();
+		expense.expenseType = expenseType;
+		expense.children = [];
+		expense.id = this.calculator.expenses.length + 1 ;
+		this.calculator.expenses.push(expense)
+	}
 }

@@ -3,6 +3,7 @@ import {COMPUTERS_COST, NETWORK_COST, SERVER_COST} from "./Costs";
 
 export class Expense {
 	expenseType: ExpenseType;
+	id: number;
 	children: Expense[];
 
 	public GetExpenseTotalCost(): number {

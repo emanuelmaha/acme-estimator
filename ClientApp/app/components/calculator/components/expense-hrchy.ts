@@ -15,12 +15,12 @@ export class ExpenseHrchyComponent {
 	showCheckbox: boolean = false;
 
 	
-	public AddExpense(expenseType: ExpenseType) {
+	public AddExpense(exp: Expense, expenseType: ExpenseType) {
 		this.showAddMore = true;
 		this.showCheckbox = false;
 		let expense = new Expense();
 		expense.expenseType = expenseType;
 		expense.children = [];
-		this.expenses.push(expense)
+		exp.children.push(expense)
 	}
 }

@@ -1,12 +1,13 @@
 <div class="expense" *ngFor="let expense of expenses">
-	{{ExpenseType[expense.expenseType]}}
+	{{ExpenseType[expense.expenseType]}} {{expense.id}} <span *ngIf="expense.id"> cost {{expense.GetExpenseTotalCost()}}</span>
+	<div class="add-more">
+		<span class="glyphicon glyphicon-plus" title="Add More"></span>
+		<div class="expense-type">
+			<div *ngIf="expense.expenseType !== ExpenseType.Computer && expense.expenseType !== ExpenseType.Server"><a (click)="AddExpense(expense, ExpenseType.Network)"> Network </a></div>
+			<div *ngIf="expense.expenseType !== ExpenseType.Computer"><a (click)="AddExpense(expense, ExpenseType.Server)"> Server </a></div>
+			<div><a (click)="AddExpense(expense, ExpenseType.Computer)"> Computer </a></div>
+		</div>
+	</div>
 	<expense-hrchy [expenses]="expense.children"></expense-hrchy>
 </div>
-<div class="add-more"> 
-	<a class="hint" *ngIf="showAddMore" (click)="showAddMore = false; showCheckbox = true">Add more expenses</a>
-	<div class="expense-type" *ngIf="showCheckbox">
-		<label><input type="checkbox" (click)="AddExpense(ExpenseType.Network)" ngModel=""> Network </label>
-		<label><input type="checkbox" (click)="AddExpense(ExpenseType.Server)" ngModel=""> Server </label>
-		<label><input type="checkbox" (click)="AddExpense(ExpenseType.Computer) " ngModel=""> Computer </label>
-	</div>
-</div>
+
